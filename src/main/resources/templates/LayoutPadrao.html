@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<title>WASC</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+		<link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.standalone.min.css}"/>
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+		
+		<!-- Custom styles for this template -->
+		<link rel="stylesheet" th:href="@{/css/main.css}"/>
+		<link rel="stylesheet" th:href="@{/css/style.css}"/>
+				
+		</head>
+
+		<body>
+
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">W<i
+						class="glyphicon glyphicon-font"></i>SC
+					</a>
+
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a th:href="@{/projeto/novo}">HOME</a></li>
+						<li><a th:href="@{/projeto/cadastro}">CADASTRO</a></li>
+						<li><a th:href="@{/projeto/pesquisa}">PESQUISA</a></li>
+						<li><a data-toggle="modal" data-target="#myModal"
+							href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
+					</ul>
+				</div>
+			<!--/.nav-collapse -->
+			</div>
+		</div>
+		
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Contato</h4>
+				</div>
+				<div class="modal-body">
+		       	<form>
+		        	<div class="form-group">
+		            	<label for="contatoNome" class="control-label">Nome</label>           	
+		            	<input type="text" class="form-control" id="contatoNome"/>
+		          	</div>
+		        
+		          	<div class="form-group">
+		            	<label for="contatoEmail" class="control-label">E-mail</label>
+		            	<input type="text" class="form-control" id="contatoEmail"/>
+		          	</div>
+		          	<div class="form-group">
+		            	<label for="contatoMensagem" class="control-label">Mensagem:</label>
+		            	<textarea class="form-control" id="contatoMensagem"></textarea>
+		          	</div>
+		        </form>
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		        	<button type="button" class="btn btn-warning">Enviar Mensagem</button>
+		      	</div>
+				
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+		
+		<section layout:fragment="conteudo">
+			<p>Conteúdo Principal</p>
+		</section>
+	
+		<script th:src="@{/js/jqueryv1.11.min.js}"></script> 
+		<script th:src="@{/js/export.js}"></script>
+		<script th:src="@{/js/jquery-2.2.4.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+		<script th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>
+		<script th:src="@{/js/jquery.table2excel.js}"></script>		
+		<script th:src="@{/js/jquery.maskMoney.min.js}"></script>		
+	</body>
+</html>

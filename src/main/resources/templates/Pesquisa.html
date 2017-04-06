@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+		
+	<section layout:fragment="conteudo">
+		<div class="panel panel-default">
+    		<div class="panel-heading">
+    			<h1 class="panel-title abc-titulo-panel">Pesquisa</h1>
+    		</div>
+    	
+			<div class="container">
+				<div class="panel-body">
+					<div class="table-responsive">
+					<table class="table table-striped table-responive" id="table2excel">
+						<thead>
+							<tr>
+								<th class="text-center col-md-1">#</th>
+								<th class="col-md-2">Motorista</th>
+								<th class="text-center col-md-2">Data Corrida</th>
+								<th class="text-center col-md-2">Horário Corrida</th>
+								<th class="text-right col-md-2">Valor Corrida</th>
+								<th class="text-center col-md-1">Qtde. Km</th>
+								<th class="text-center col-md-1">Dinâmico</th>
+								<th class="text-center col-md-2">Total Corrida</th>
+								<th class="text-center col-md-1"></th>
+							</tr>
+						</thead>
+							<tbody>
+							
+							<tr th:each="ganho : ${ganhos}">
+		   					<td class="text-center" th:text="${ganho.codigo}">1</td>
+		   					<td th:text="${{ganho.motorista}}"></td>
+		   					<td class="text-center" th:text="${{ganho.dtCorrida}}"></td>
+		   					<td class="text-center" th:text="|${{ganho.hCorrida}}|"></td>
+		   					<td class="text-right" th:text="|R$ ${{ganho.valorCorrida}}|"></td>
+		   					<td class="text-right" th:text="|${{ganho.qtdeKm}}|"></td>
+		   					<td class="text-right" th:text="|${{ganho.dinamico}}|"></td>
+		   					<td class="text-right" th:text="|${{ganho.totalCorrida}}|"></td>
+		   					<td class="text-center"><a class="btn btn-link btn-xs" th:href="@{/projeto/{codigo}(codigo=${ganho.codigo})}">
+		   					<span class="glyphicon glyphicon-pencil"></span></a></td>
+		   					</tr>
+							<tr>	
+								<td colspan="9" th:if="${#lists.isEmpty(ganhos)}">Nenhum registro foi encontrado</td>
+							</tr>
+					</tbody>
+				</table>
+				</div>
+				<div class="wag-exp-button">
+					<button id="btnExport" class="btn btn-success clearfix" data-toggle="tooltip" title="Exportar para Excel"><span>Exportar</span></button>		
+				</div>			
+			</div>
+		</div>
+	</div>
+		
+	<div id="f">
+		<div class="container">
+			<div class="row centered">
+				<a href="https://twitter.com/wagnersalamanca" TARGET="_blank"><i
+				class="fa fa-twitter"></i></a><a
+				href="https://facebook.com/wagner.salamancacisternas"
+				TARGET="_blank"><i class="fa fa-facebook"></i></a><a href="#"><i
+				class="fa fa-dribbble"></i></a>
+
+			</div>
+			<!-- row -->
+		</div>
+		<!-- container -->
+	</div>
+
+	</section>
+	
+		
+</html>

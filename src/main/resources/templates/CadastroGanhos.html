@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+		
+		<section layout:fragment="conteudo">
+		
+	    <form class="form-horizontal" method="POST" action="/projeto" th:object="${ganhos}">
+			<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text="${mensagem}">Salvo com sucesso!!!</span>
+			</div>
+			<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedError : ${#fields.detailedErrors()}">
+			<span th:text="${detailedError.message}"></span>
+				</div>
+			</div>	
+	
+			<div class="panel panel-default">
+	    		<div class="panel-heading">
+	    			<div class="clearfix">
+		   				<h1 class="panel-title aw-titulo-panel">Novo Cadastro</h1>
+		   			</div>
+	    		</div>
+    		
+    		<div class="panel-body">
+    			<input type="hidden" th:field="*{codigo}"/>
+    			<div class="form-group" >
+					<label for="motorista" class="col-sm-2 control-label">Motorista</label>
+						<div class="col-sm-2"> 
+							<select class="form-control" name="motorista" th:field="*{motorista}"> 
+							  	<option th:each="motorista : ${todosSeletorMotorista}" th:value="${motorista}"
+							  	th:text="${motorista.motorista}"></option>
+							</select>
+						</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('dtCorrida')} ? has-error">
+					<label for="dtCorrida" class="col-sm-2 control-label">Data Corrida</label>
+						<div class="col-sm-2"> 
+							<input type="text" class="form-control"	id="dtCorrida" th:field="*{dtCorrida}"
+							data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+						</div>
+				</div>		
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('hCorrida')} ? has-error">
+					<label for="hCorrida" class="col-sm-2 control-label">Horário Corrida</label>
+						<div class="col-sm-1"> 
+							<input type="text" class="form-control"	id="hCorrida" th:field="*{hCorrida}"/>
+						</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('valorCorrida')} ? has-error">
+					<label for="valorCorrida" class="col-sm-2 control-label">Valor Corrida</label>
+						<div class="col-sm-1"> 
+							<input type="text" class="form-control js-currency" id="valorCorrida" th:field="*{valorCorrida}"/>
+						</div>
+				</div>
+									
+				<div class="form-group" th:classappend="${#fields.hasErrors('qtdeKm')} ? has-error">
+					<label for="qtdeKm" class="col-sm-2 control-label">Qtde. KM</label>
+						<div class="col-sm-1"> 
+							<input type="text" class="form-control" id="qtdeKm" name="qtdeKm" th:field="*{qtdeKm}"/>
+						</div>
+				</div>
+										
+				<div class="form-group" th:classappend="${#fields.hasErrors('dinamico')} ? has-error">
+					<label for="precoDin" class="col-sm-2 control-label">Preço Dinâmico?</label>
+					<label class="radio-inline col-sm-1 control-label">
+			 			<input type="radio" name="first" id="enable" value="Enable" 
+onclick="if(document.getElementById('dinamico').disabled==true){document.getElementById('dinamico').disabled=false}"/>
+											  SIM
+					</label>
+					<label class="radio-inline col-sm-0 control-label">
+						<input type="radio" name="first" id="disable" value="Disable" 
+onclick="if(document.getElementById('dinamico').disabled==false){document.getElementById('dinamico').disabled=true}" checked="checked"/>
+						  NÃO
+					</label>
+				</div>
+				
+				<div class="form-group">
+					<label for="dinamico" class="col-sm-2 control-label">Qtde Dinâmico</label>
+						<div class="col-sm-1"> 
+							<input type="text" class="form-control" id="dinamico" th:field="*{dinamico}"  disabled="disabled"/>
+						</div>	
+				</div>
+			
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+			        	<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exModal">Salvar</button>
+			        </div>
+				</div>
+				
+			</div>
+    	</div>
+    </form>	
+   
+    
+   
+
+	<div id="f">
+		<div class="container">
+			<div class="row centered">
+				<a href="https://twitter.com/wagnersalamanca" TARGET="_blank"><i
+					class="fa fa-twitter"></i></a><a
+					href="https://facebook.com/wagner.salamancacisternas"
+					TARGET="_blank"><i class="fa fa-facebook"></i></a><a href="#"><i
+					class="fa fa-dribbble"></i></a>
+
+			</div>
+			<!-- row -->
+		</div>
+		<!-- container -->
+	</div>
+	
+	</section>
+	
+</html>
